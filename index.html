@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de prueba</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="portfolio-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        <button class="mobile-menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- Barra de navegación flotante para móvil -->
+        <nav class="mobile-nav-bar" id="mobileNavBar">
+            <a href="#about" class="mobile-nav-link active" data-section="about">
+                <img src="sources/about-me.svg" alt="Acerca de mí" class="mobile-nav-icon">
+            </a>
+            <a href="#interests" class="mobile-nav-link" data-section="interests">
+                <img src="sources/interests.svg" alt="Áreas de interés" class="mobile-nav-icon">
+            </a>
+            <a href="#hobbies" class="mobile-nav-link" data-section="hobbies">
+                <img src="sources/hobbys.svg" alt="Hobbies" class="mobile-nav-icon">
+            </a>
+            <a href="#experience" class="mobile-nav-link" data-section="experience">
+                <img src="sources/academic.svg" alt="Experiencia Académica" class="mobile-nav-icon">
+            </a>
+        </nav>
+        
+        <aside class="sidebar" id="sidebar">
+            <section class="preview">
+                <img src="sources/Perfil.jpg" alt="Foto de Perfil de Allfadir Cedillo">
+                <h3 class="preview-name">Allfadir Cedillo</h3>
+            </section>
+            <nav class="navigation">
+                <ul>
+                    <li>
+                        <a href="#about" class="nav-link active">
+                            <img src="sources/about-me.svg" alt="" class="nav-icon">
+                            <span>Acerca de mí</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#interests" class="nav-link">
+                            <img src="sources/interests.svg" alt="" class="nav-icon">
+                            <span>Áreas de interés</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#hobbies" class="nav-link">
+                            <img src="sources/hobbys.svg" alt="" class="nav-icon">
+                            <span>Hobbies</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#experience" class="nav-link">
+                            <img src="sources/academic.svg" alt="" class="nav-icon">
+                            <span>Experiencia Académica</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="profile-header">
+                <div class="header-content">
+                    <div class="profile-image-container">
+                        <img src="sources/Perfil.jpg" alt="Foto de perfil de Allfadir Cedillo" class="profile-picture">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Allfadir Cedillo</h1>
+                        <p class="job-title">Desarrollador web Trainee</p>
+                        <p class="tagline">Creando experiencias digitales modernas</p>
+                    </div>
+                </div>
+            </header>
+
+            <section id="about" class="content-section active">
+                <h2>Acerca de mí</h2>
+                <p>Egresado de la carrera de Ingeniería en telecomunicaciones, sistemas y electrónica entusiasta del desarrollo web especialmente del front-end.</p>
+                <p>Siempre en busca de aprender nuevas cosas y sobre todo poner en práctica lo aprendido.</p>
+            </section>
+
+            <section id="interests" class="content-section">
+                <h2>Áreas de interés</h2>
+                <p>Mis intereses abarcan diferentes sectores de la programación, como lo son:</p>
+                <ul>
+                    <li>Desarrollo de aplicaciones web.</li>
+                    <li>Desarrollo de aplicaciones móviles.</li>
+                    <li>Desarrollo de videojuegos.</li>
+                    <li>Desarrollo de aplicaciones de escritorio.</li>
+                    <li>Desarrollo de aplicaciones para la consola.</li>
+                </ul>
+            </section>
+
+            <section id="hobbies" class="content-section">
+                <h2>Hobbies</h2>
+                <p>Fuera del área de la programación me interesa:</p>
+                <ul>
+                    <li>El béisbol, incluso lo llegué a practicar aunque nunca fui muy bueno.</li>
+                    <li>Las series de misterio, creo que siempre es bueno ver algo que te haga pensar.</li>
+                    <li>La música, aunque más que nada temas un poco viejos; no me agrada tanto la música actual.</li>
+                </ul>
+            </section>
+
+            <section id="experience" class="content-section">
+                <h2>Experiencia Académica</h2>
+                <p>Dentro de la carrera tuve la oportunidad de ver muchos temas sobre diversas áreas pero los que me parecen mas destacables son:</p>
+                <ul>
+                    <li>Básicos de programación en C/C++.</li>
+                    <li>Básicos de algoritmos de programación.</li>
+                    <li>Básicos de sistemas operativos.</li>
+                    <li>Básicos de redes(normativas, protocolos, configuración dentro de simulador, colas)</li>
+                    <li>Bases de datos SQL(con Oracle y Sql Server)</li>
+                    <li>Circuitos electricos y máquinas electricas</li>
+                    <li>Métodologias Ágiles(solo teoría)</li>
+                </ul>
+                <p>Dentro de los proyectos mas destacables que realice durante la carrera agregaria:</p>
+                <ul>
+                    <li>
+                        <h4>Calculadora de integrales que funciona desde la terrminal</h6>
+                        <p>Este proyecto fue realizado en C++ y me permitió aplicar mis conocimientos de programación y algoritmos para resolver integrales de manera automática.</p>
+                    </li>
+                    <li>
+                        <h4>Punto de venta de un negocio de mi localidad</h4>
+                        <p>Este proyecto fue realizado en VisualBasic y me permitió aplicar mis conocimientos de bases de datos y programación orientada a objetos para crear un sistema de punto de venta funcional.</p>
+                    </li>
+                    <li>
+                        <h4>Libreria de videojuegos</h4>
+                        <p>Este proyecto fue realizado con HTML, CSS y JavaScript y me permitio introducirme en el desarrollo web y el uso de APIs</p>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
