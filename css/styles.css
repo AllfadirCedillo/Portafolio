@@ -1,0 +1,605 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras para el sidebar fijo */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #0D6EFD;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+.portfolio-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #121212;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #242424;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    border-right: 1px solid #333;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.preview {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.preview img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0D6EFD;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.25);
+}
+
+.preview img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+}
+
+.preview-name {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.status-text {
+    font-size: 0.8rem;
+    color: #A0A0A0;
+    font-weight: 500;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation li {
+    margin-bottom: 1rem;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #A0A0A0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(64%) sepia(0%) saturate(0%) hue-rotate(181deg) brightness(96%) contrast(89%);
+    transition: filter 0.3s ease;
+    flex-shrink: 0;
+}
+
+.navigation a:hover {
+    background-color: #333;
+    color: #FFFFFF;
+}
+
+.navigation a:hover .nav-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(109deg) brightness(100%) contrast(100%);
+}
+
+.navigation a.active {
+    background-color: #0D6EFD;
+    color: #FFFFFF;
+}
+
+.navigation a.active .nav-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(109deg) brightness(100%) contrast(100%);
+}
+
+.main-content {
+    flex-grow: 1;
+    margin-left: 250px;
+    padding: 3rem 5rem;
+    background-color: #1E1E1E;
+    min-height: 100vh;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #1E1E1E 0%, #2A2A2A 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0D6EFD, #20C997, #0D6EFD);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #0D6EFD;
+    margin-bottom: 0;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.3);
+}
+
+.profile-picture:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(13, 110, 253, 0.4);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: #20C997;
+    border-radius: 50%;
+    border: 3px solid #1E1E1E;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.job-title {
+    margin: 0 0 0.5rem 0;
+    color: #0D6EFD;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    margin: 0;
+    color: #A0A0A0;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.content-section {
+    display: none; /* Oculto por defecto */
+}
+
+.content-section.active {
+    display: block; /* Visible solo si tiene la clase 'active' */
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    border-bottom: 2px solid #0D6EFD;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.content-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #B0B0B0;
+}
+
+.content-section ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Estilos responsivos */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    background-color: #242424;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #E0E0E0;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Overlay para cerrar el menú */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Barra de navegación flotante para móvil */
+.mobile-nav-bar {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(36, 36, 36, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 10px 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+}
+
+.mobile-nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.2);
+    transform: translateY(-2px);
+}
+
+.mobile-nav-link.active {
+    background-color: #0D6EFD;
+    transform: translateY(-2px);
+}
+
+.mobile-nav-link.active::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #0D6EFD;
+    border-radius: 50%;
+}
+
+.mobile-nav-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(64%) sepia(0%) saturate(0%) hue-rotate(181deg) brightness(96%) contrast(89%);
+    transition: filter 0.3s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-icon,
+.mobile-nav-link.active .mobile-nav-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(109deg) brightness(100%) contrast(100%);
+}
+
+/* Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .main-content {
+        margin-left: 220px;
+        padding: 2.5rem 3rem;
+    }
+}
+
+/* Móviles grandes y tablets pequeñas */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* Mostrar barra de navegación flotante en móvil */
+    .mobile-nav-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    /* Ocultar barra flotante cuando el sidebar está abierto */
+    .mobile-nav-bar.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    .sidebar {
+        width: 280px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        border-right: 1px solid #333;
+        border-bottom: none;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 2rem;
+        width: 100%;
+        transition: margin-left 0.3s ease;
+        padding-top: 80px; /* Espacio para el botón hamburguesa */
+        padding-bottom: 100px; /* Espacio para la barra flotante */
+    }
+    
+    .portfolio-container {
+        flex-direction: row;
+        position: relative;
+    }
+
+    .profile-header {
+        margin-top: 0;
+    }
+
+    /* Mejorar área de toque en navegación móvil */
+    .navigation a {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        min-height: 48px; /* Área de toque mínima recomendada */
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 1rem;
+        width: 260px;
+        left: -260px;
+    }
+    
+    .main-content {
+        padding: 1rem;
+        padding-top: 70px;
+        padding-bottom: 90px; /* Espacio para la barra flotante */
+    }
+    
+    .profile-header {
+        padding: 1.5rem;
+        margin-top: 0;
+    }
+    
+    .profile-header h1 {
+        font-size: 2rem;
+    }
+
+    .mobile-menu-toggle {
+        top: 15px;
+        left: 15px;
+        padding: 8px;
+    }
+
+    .mobile-menu-toggle span {
+        width: 20px;
+    }
+
+    .header-content {
+        gap: 1rem;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .job-title {
+        font-size: 1rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+    }
+
+    /* Ajustar barra flotante para móviles pequeños */
+    .mobile-nav-bar {
+        bottom: 15px;
+        padding: 8px 12px;
+    }
+
+    .mobile-nav-link {
+        width: 45px;
+        height: 45px;
+        margin: 0 3px;
+    }
+
+    .mobile-nav-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 360px) {
+    .sidebar {
+        width: 240px;
+        left: -240px;
+        padding: 0.8rem;
+    }
+
+    .main-content {
+        padding: 0.8rem;
+        padding-top: 65px;
+        padding-bottom: 85px; /* Espacio para la barra flotante */
+    }
+
+    .profile-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .preview img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .preview-name {
+        font-size: 1rem;
+    }
+
+    .navigation a {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        gap: 0.8rem;
+    }
+
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Ajustar barra flotante para dispositivos muy pequeños */
+    .mobile-nav-bar {
+        bottom: 10px;
+        padding: 6px 10px;
+    }
+
+    .mobile-nav-link {
+        width: 40px;
+        height: 40px;
+        margin: 0 2px;
+    }
+
+    .mobile-nav-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
