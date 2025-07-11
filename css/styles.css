@@ -246,13 +246,6 @@ html {
     50% { background-position: 100% 50%; }
 }
 
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-
 .profile-image-container {
     position: relative;
     display: inline-block;
@@ -563,11 +556,7 @@ html {
         font-size: 2rem;
         word-wrap: break-word;
     }
-
-    .header-content {
-        gap: 1rem;
-    }
-
+    
     .profile-picture {
         width: 120px;
         height: 120px;
