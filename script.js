@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
     const contentSections = document.querySelectorAll('.content-section');
-    const curriculumBtn = document.getElementById('curriculumBtn');
 
     // Función para actualizar enlaces activos
     function updateActiveLinks(activeSection) {
@@ -45,24 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionId = this.getAttribute('href');
             handleNavigation(event, sectionId);
         });
-    });
-
-    // Manejo del botón de curriculum
-    curriculumBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        
-        // Abrir el CV de Google Drive en una nueva pestaña
-        window.open('https://drive.google.com/file/d/1tuRF8nT6NqoxLlsUQ-ap47_snoidbWqb/view?usp=drive_link', '_blank');
-        
-        // Feedback visual
-        const originalHTML = this.innerHTML;
-        this.style.opacity = '0.7';
-        this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Abriendo...';
-        
-        setTimeout(() => {
-            this.style.opacity = '1';
-            this.innerHTML = originalHTML;
-        }, 1500);
     });
 
     // Observador para actualizar la navegación basada en el scroll
