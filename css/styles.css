@@ -9,12 +9,53 @@ body {
     overflow-x: hidden;
 }
 
+/* Header principal del portafolio */
+.profile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 9998;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-header .preview {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 1rem;
+}
+
+.profile-header .preview img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0D6EFD;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+}
+
+.profile-header .preview-name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 /* Botón de Curriculum fijo */
 .curriculum-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
     background: linear-gradient(135deg, #0D6EFD, #0b5ed7);
     color: white;
     text-decoration: none;
@@ -71,6 +112,7 @@ html {
     background-color: #121212;
     overflow-x: hidden;
     width: 100%;
+    padding-top: 80px; /* Compensar altura del header fijo */
 }
 
 .sidebar {
@@ -78,22 +120,22 @@ html {
     background-color: #242424;
     padding: 2rem;
     position: fixed;
-    top: 0;
+    top: 80px; /* Ajustar para compensar el header */
     left: 0;
-    height: 100vh;
+    height:100vh; /* Ajustar altura */
     overflow-y: auto;
     z-index: 1000;
     border-right: 1px solid #333;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.preview {
+.sidebar .preview {
     display: flex;
     margin-top: 0;
     margin-bottom: 2rem;
 }
 
-.preview img {
+.sidebar .preview img {
     width: 50px;
     height: 50px;
     margin-right: 1rem;
@@ -104,12 +146,12 @@ html {
     box-shadow: 0 6px 20px rgba(13, 110, 253, 0.25);
 }
 
-.preview img:hover {
+.sidebar .preview img:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
 }
 
-.preview-name {
+.sidebar .preview-name {
     margin: 1rem 0 0.5rem 0;
     font-size: 1.1rem;
     font-weight: 600;
@@ -175,9 +217,10 @@ html {
     box-sizing: border-box;
 }
 
-.profile-header {
+.profile-main {
     text-align: center;
     margin-bottom: 3rem;
+    margin-top: 0;
     background: linear-gradient(135deg, #1E1E1E 0%, #2A2A2A 100%);
     border-radius: 16px;
     padding: 2.5rem;
@@ -186,7 +229,7 @@ html {
     overflow: hidden;
 }
 
-.profile-header::before {
+.profile-main::before {
     content: '';
     position: absolute;
     top: 0;
@@ -253,7 +296,7 @@ html {
     text-align: center;
 }
 
-.profile-header h1 {
+.profile-main h1 {
     margin: 0;
     font-size: 2.5rem;
     color: #FFFFFF;
@@ -380,12 +423,22 @@ html {
 @media (max-width: 1024px) and (min-width: 769px) {
     .sidebar {
         width: 220px;
+        top: 80px;
+        height: 100vh;
     }
     
     .main-content {
         margin-left: 220px;
         padding: 2.5rem 3rem;
         width: calc(100% - 220px);
+    }
+
+    .profile-header {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .profile-header .preview-name {
+        font-size: 1rem;
     }
 }
 
@@ -401,13 +454,36 @@ html {
     .sidebar {
         display: none;
     }
+
+    /* Ajustar header para móviles */
+    .profile-header {
+        padding: 0.8rem 1rem;
+    }
+
+    .profile-header .preview img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-header .preview-name {
+        font-size: 1rem;
+    }
+
+    .curriculum-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .portfolio-container {
+        padding-top: 70px; /* Reducir padding para móviles */
+    }
     
     .main-content {
         margin-left: 0;
         padding: 2rem;
         width: 100%;
         max-width: 100vw;
-        padding-top: 20px; /* Reducir padding superior ya que no hay botón hamburguesa */
+        padding-top: 20px;
         padding-bottom: 100px; /* Espacio para la barra flotante */
         position: relative;
         z-index: 1;
@@ -421,16 +497,8 @@ html {
         overflow-x: hidden;
     }
 
-    .profile-header {
+    .profile-main {
         margin-top: 0;
-    }
-
-    /* Ajustar botón de curriculum para móviles */
-    .curriculum-btn {
-        top: 10px;
-        right: 10px;
-        padding: 10px 16px;
-        font-size: 13px;
     }
 
     /* Mejorar área de toque en navegación móvil */
@@ -451,24 +519,47 @@ html {
 
 /* Móviles pequeños */
 @media (max-width: 480px) {
+    /* Ajustar header para móviles pequeños */
+    .profile-header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .profile-header .preview img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile-header .preview-name {
+        font-size: 0.9rem;
+    }
+
+    .curriculum-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .portfolio-container {
+        padding-top: 65px; /* Reducir más para móviles pequeños */
+    }
+
     .main-content {
         margin-left: 0;
         padding: 1rem;
         width: 100%;
         max-width: 100vw;
-        padding-top: 20px; /* Reducir padding superior ya que no hay botón hamburguesa */
+        padding-top: 20px;
         padding-bottom: 90px; /* Espacio para la barra flotante */
         position: relative;
         z-index: 1;
         box-sizing: border-box;
     }
     
-    .profile-header {
+    .profile-main {
         padding: 1.5rem;
         margin-top: 0;
     }
     
-    .profile-header h1 {
+    .profile-main h1 {
         font-size: 2rem;
         word-wrap: break-word;
     }
@@ -490,14 +581,6 @@ html {
     .tagline {
         font-size: 0.9rem;
         word-wrap: break-word;
-    }
-
-    /* Ajustar botón de curriculum para móviles pequeños */
-    .curriculum-btn {
-        top: 8px;
-        right: 8px;
-        padding: 8px 14px;
-        font-size: 12px;
     }
 
     /* Ajustar barra flotante para móviles pequeños */
@@ -536,11 +619,11 @@ html {
         box-sizing: border-box;
     }
 
-    .profile-header {
+    .profile-main {
         padding: 1rem;
     }
 
-    .profile-header h1 {
+    .profile-main h1 {
         font-size: 1.8rem;
         word-wrap: break-word;
     }
